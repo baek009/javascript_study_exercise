@@ -11,8 +11,43 @@
   <body>
     <p id="show"></p>
     <script>
-      document.getElementById("show").innerHTML = "안녕하세요.";
+      document.getElementById("show").innerHTML = 10 + 20;
     </script>
   </body>
 </html>
 ```
+
+## 1.1 데이터 출력
+
+- innerHTML : 브라우저 안에 있는 HTML 요소에 데이터 출력
+- document.write() : 브라우저에 간단한 데이터 출력
+- alert() : 알림창에 데이터 출력
+- console.log() : 브라우저 콘솔에 데이터 출력
+
+### 1.1.1 innerHTML
+
+### 1.1.2 document.write()
+
+```js
+
+```
+
+### 1.1.3 alert()
+
+`js`
+
+ <p id="show"></p>
+    <script>
+      alert(10 + 20);
+    </script>```
+
+### 1.1.4 console.log()
+
+- 브라우저 개발자 도구 console에 출력
+
+````js
+<script>
+      console.log(10 + 20);
+    </script>
+    ```
+````
