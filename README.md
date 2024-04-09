@@ -23,7 +23,7 @@ console.log(c);
 console.log(d);
 ```
 
-## Bigint
+## 3.2 Bigint
 
 - 정수는 15개의 숫자, 15자리 정수까지 나타낼수 있다.
 - 그 이상의 정수를 사용하려면 Binint 형 사용해야한다.
@@ -33,7 +33,7 @@ const e = 9999999999999998765n;
 console.log(e);
 ```
 
-## 문자열 string
+## 3.4 문자열 string
 
 ```js
 // 문자열
@@ -55,7 +55,7 @@ let text3 = `이름: ${username}, 나이: ${age}`;
 console.log(text3);
 ```
 
-## boolean
+## 3.5 boolean
 
 ```js
 let x = 5 > 3; // true
@@ -65,7 +65,7 @@ console.log(x);
 console.log(y);
 ```
 
-## undefined, null(빈 문자열)
+## 3.6 undefined, null(빈 문자열)
 
 ```js
 let x;
@@ -75,7 +75,7 @@ console.log(x);
 console.log(typeof y);
 ```
 
-## 객체 object
+## 3.7 객체 object
 
 ```js
 const member = {
@@ -92,3 +92,30 @@ console.log("아이디: ", member.id);
 console.log(member.age);
 console.log(member.name);
 ```
+
+## 3.8 심볼 symbol
+
+- number, string, boo lean
+
+```js
+const member = {
+  name: "홍길동",
+  age: 30,
+};
+
+// Symbol()로 심볼 id 생성
+let id = Symbol("id");
+// 객체 member의 키 id에 문자열 "kdhong" 저장
+// 심볼 id가 객체의 키로 사용되면 심볼 데이터형은
+// 유일한 식별자이기 때문에 객체의 키 이름이 겹쳐서 충돌하는 경우 방지
+member[id] = "kdhong";
+
+// 객체 member에서 심볼 id가 키로 사용된 요소는
+// member[id]에 의해 접근 할 수 있다.
+// 심볼 id와 새롭게 생성된 Symbol("id")는 서로 다르다
+console.log(id === Symbol("id"));
+```
+
+## 3.8 배열 array
+
+- index는 0부터 시작
