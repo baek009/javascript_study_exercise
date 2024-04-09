@@ -1,99 +1,97 @@
-# 6. if문
+# 8. for 문
 
-## 6.1 if ~ 구문
+## 8.1 for 문
 
-- 참,거짓에 따라 특정 코드의 실행을 제어
+- 특정 코드를 반복해서 실행 for, while, do while
 
 ```txt
-if(조건식){
+for(초기값; 조건식; 증가_감소;){
   문장;
   ...
 }
 ```
 
 ```js
-let x = 1000; // 입장료 10000원
-let age = 70;
+// for의 조건식이 참인 동안 문장들을 반복실행
+// 1. i의 값을 1로 초기화
+// 2. 조건식 1 <= 3 참, 1출력
+// 3. i의 값이 1 증가
+// 4. i의 값이 2가 됨
+// 5. 조건식 2 <= 3 참, 2 출력
+// 6. i의 값이 1 증가
+// 7. i의 값이 3이 됨
+// 8. 조건식 3 <= 3창, 3 출력
+// 9. i의 값이 1 증가
+// 10. i의 값이 4가 됨
+// 11. 조건식 4 <=  3 거짓, for 루프를 빠져나감
 
-if (age >= 65) {
-  // 입장료: 0원
-  x = 0;
+for (let i = 1; i <= 3; i++) {
+  console.log(1);
 }
-console.log(`입장료: ${x}원`);
 
-// 웹사이트 관리자 아이디(id)가 admin이거나 Level이 1인 경우라고 가정
-// 관리자일 경우 "관리자입니다."라고 출력
-let id = "admin";
-let Level = 5;
-
-if (id === "admin" || level === 1) {
-  console.log("관리자입니다.");
+// for 문을 이용해서 1 ~ 10 정수의 합계를 구하는 프로그램
+let sum = 0;
+// i가 1에서 100까지 값을 가지는 동안
+for (let i =1; i <=100; 1++) {
+  // 문장이 반복 실행되며, 변수 sum에 1 ~ 100의 누적 합계를 저장
+  sum += i;
 }
+// sum의 값을 출력
+console.log(sum);
 
-// 필기시험 성적과 실기시험 성적 모두 80이상 합격
-let score1 = 95; // 필기
-let score2 = 80; // 실기
+// for문, 배열, 템플릿 문자열 이용하여 웹페이지 글자에 색을 설정
+const color =["red", "green", "blue", "pink"];
+let text = "";
 
-if (score1 >= 80 && score2 >= 80) {
-  console.log("합격입니다.");
+// i는 0, 1, 2, 3의 값을 가지는 동안
+for (let i = 0; i <=3; i++) {
+  text += `<span style="color: ${color[i]}">안녕</span>`;
 }
+console.log(text);
+document.write(text);
+
+  // 템플릿 문자열을 이용
+  //
 ```
 
-## 6.2 if ~ else ~ 구문
+## 8.2 for in 문
 
-```txt
-if(조건식){
+- 객체의 요소들을 반복해서 읽어올 때 for in
+
+```js
+// 객체 내 각 요소들을 반복해서 읽어와
+// 그 키를 변수에 저장하는 식으로
+// 반복 루프가 진행
+for(변수 in 객체){
   문장;
   ...
-} else {
-
 }
 ```
 
 ```js
-let num = 9;
+const member = { id: "kdhong", username: "홍길동", age: 30 };
 
-if (num % 2 == 0) {
-  console.log(`${num}은(는) 짝수입니다.`);
-} else {
-  console.log(`${num}은(는) 홀수입니다.`);
+// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
+for (let x in member) {
+  console.log(member[x]);
 }
-
-// 70점 이상이면 합격, 그렇지 않으면 불합격
-let score = 65;
-let result = "";
-
-if (score >= 70) {
-  result = "합격";
-} else {
-  result = "불합격";
-}
-console.log(result);
 ```
 
-## 6.2 if ~ else if ~ else 구문
+````
 
-```txt
-let num = 9;
-
-if (num % 2 == 0) {
-  console.log(`${num}은(는) 짝수입니다.`);
-} else {
-  console.log(`${num}은(는) 홀수입니다.`);
-}
-
-// 70점 이상이면 합격, 그렇지 않으면 불합격
-let score = 65;
-let result = "";
-
-if (score >= 70) {
-  result = "합격";
-} else if(){
-  result = "불합격";
-} else{
-  result = "불합격";
-}
-console.log(result);
+## 8.3 for of 문
+```js
+for()
+```
 ```
 
-##
+
+```js
+const member = { id: "kdhong", username: "홍길동", age: 30 };
+
+// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
+for (let x in member) {
+  console.log(member[x]);
+}
+```
+````
