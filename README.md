@@ -1,216 +1,187 @@
-# 8. for 문
+# 11.1 객체 생성
 
-## 8.1 for 문
-
-- 특정 코드를 반복해서 실행 for, while, do while
-
-```txt
-for(초기값; 조건식; 증가_감소;){
-  문장;
-  ...
-}
-```
+- 객체(object)는 프로퍼티(property)와 메서드(method)
+- 객체의 프로퍼티는 변수와 같은 개념
+- 객체의 메서드는 함수와 거의 동일한 것
+- 특정 객체에 소속된 변수와 함수를 그 객체의 프로퍼티와 메서드라고 부른다.
+- 자바스크립트에서 객체는 아주 중요한 개념이다.
+- 함수(function), 배열(array), 날짜(date), 수학(math)... 등등 모든 것이 객체
+- 자바스크립트의 숫자(number), 문자열(string)도 일종의 객체
 
 ```js
-// for의 조건식이 참인 동안 문장들을 반복실행
-// 1. i의 값을 1로 초기화
-// 2. 조건식 1 <= 3 참, 1출력
-// 3. i의 값이 1 증가
-// 4. i의 값이 2가 됨
-// 5. 조건식 2 <= 3 참, 2 출력
-// 6. i의 값이 1 증가
-// 7. i의 값이 3이 됨
-// 8. 조건식 3 <= 3창, 3 출력
-// 9. i의 값이 1 증가
-// 10. i의 값이 4가 됨
-// 11. 조건식 4 <=  3 거짓, for 루프를 빠져나감
+// 1. 객체 member를 생성
+// 객체 생성할 때는 일반적으로 키워드 const 사용
+const member = {
+  //member 객체는 id, username, age 세 개의 프로퍼티로 구성
+  // 프로퍼티에 id, username, age를 키 (key)라고 부르고
+  // 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 한다.
+  id: "kdhong",
+  username: "홍길동",
+  age: 30,
+};
 
-for (let i = 1; i <= 3; i++) {
-  console.log(1);
-}
+let text;
+text = `${member.id} ${member.username} ${member.age}`;
+console.log("member object", text);
 
-// for 문을 이용해서 1 ~ 10 정수의 합계를 구하는 프로그램
-let sum = 0;
-// i가 1에서 100까지 값을 가지는 동안
-for (let i =1; i <=100; 1++) {
-  // 문장이 반복 실행되며, 변수 sum에 1 ~ 100의 누적 합계를 저장
-  sum += i;
-}
-// sum의 값을 출력
-console.log(sum);
+document.getElementById("show").innerHTML = text;
+```
 
-// for문, 배열, 템플릿 문자열 이용하여 웹페이지 글자에 색을 설정
-const color =["red", "green", "blue", "pink"];
+## 11.2 프로퍼티
+
+- 객체는 프로퍼티와 메서드로 구성
+
+### 11.2.1 for in 문으로 프로퍼티 읽기
+
+```js
+// 1. 객체 member를 생성
+// 객체 생성할 때는 일반적으로 키워드 const 사용
+const member = {
+  //member 객체는 id, username, age 세 개의 프로퍼티로 구성
+  // 프로퍼티에 id, username, age를 키 (key)라고 부르고
+  // 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 한다.
+  id: "kdhong",
+  username: "홍길동",
+  age: 30,
+};
+
 let text = "";
 
-// i는 0, 1, 2, 3의 값을 가지는 동안
-for (let i = 0; i <=3; i++) {
-  text += `<span style="color: ${color[i]}">안녕</span>`;
+// for in 문에서 x 는 객체 member에 존재하는 프로퍼티의 키 이름을 가진다.
+// 따라서 반복 루프에서 변수 x의 값은 id, name, age가 된다.
+for (x in member) {
+  text += text + member[x];
 }
-console.log(text);
-document.write(text);
 
-  // 템플릿 문자열을 이용
-  //
+document.getElementById("show").innerHTML = text;
 ```
 
-## 8.2 for in 문
-
-- 객체의 요소들을 반복해서 읽어올 때 for in
+### 11.2.2 프로퍼티 추가하기
 
 ```js
-// 객체 내 각 요소들을 반복해서 읽어와
-// 그 키를 변수에 저장하는 식으로
-// 반복 루프가 진행
-for(변수 in 객체){
-  문장;
-  ...
-}
-```
-
-```js
-const member = { id: "kdhong", username: "홍길동", age: 30 };
-
-// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
-for (let x in member) {
-  console.log(member[x]);
-}
-```
-
-````
-
-## 8.3 for of 문
-```js
-for()
-```
-```
-
-
-```js
-const member = { id: "kdhong", username: "홍길동", age: 30 };
-
-// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
-for (let x in member) {
-  console.log(member[x]);
-}
-```
-````
-
-# 10.5 클로저(clusure)
-
--전역 변수는 어디서나 값이 변경될 수 있기 때문에 보안에 취약하고 예기치 못한 오류를 발생시킬 가능성이 있다. -클로저는 전역 변수가 아닌 변수를 전역 변수와 같은 방식으로 동작하지만, 그 값을 함부로
-변경할 수 없도록 변수를 "사유화" 할 수 있는 방법을 제공
-
--클로저는 함수와 그 함수가 선언 될떄의 렉시컬 환경과의 조합이다.
-
-```js
-// 카운터 값 count를 createCounter 함수의 지역변수로 설정
-const createCounter = () => {
-  let count = 0; // 카운터의 카운트 초기 값 설정
-  console.log(count);
-
-  // handleIncrement 함수는 count 변수에 접근하고 수정할 수 있다.
-  // 이 함수는 클로저이며, createCounter 함수의 지역변수인 count를 기억한다.
-  const handleIncrement = () => {
-    console.log(count);
-    count += 1; // 현재 카운트 값을 1증가
-    // 화면에 새로운 카운트 값을 업데이트
-    document.getElementById("show").innerHTML = count;
-  };
-
-  // 클로저인 handleIncrement 함수를 반환한다.
-  // 이 함수는 외부에서 호출될 수 있으며,
-  // createCounter의 count 변수에 계속해서 접근할 수 있다.
-  return handleIncrement;
+// 1. 객체 member를 생성
+// 객체 생성할 때는 일반적으로 키워드 const 사용
+const member = {
+  //member 객체는 id, username, age 세 개의 프로퍼티로 구성
+  // 프로퍼티에 id, username, age를 키 (key)라고 부르고
+  // 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 한다.
+  id: "kdhong",
+  username: "홍길동",
+  age: 30,
 };
 
-const icrement = createCounter();
+member.email = "kdhong@gmail.com";
+
+let text = "";
+
+// for in 문에서 x 는 객체 member에 존재하는 프로퍼티의 키 이름을 가진다.
+// 따라서 반복 루프에서 변수 x의 값은 id, name, age가 된다.
+for (x in member) {
+  text += `키: ${x} 값: ${member[x]} <br>`;
+}
+
+document.getElementById("show").innerHTML = text;
 ```
 
-- 리액트에서 클로저를 활용한 카운터 컴포넌트
+### 11.2.3 프로퍼티 삭제하기
 
 ```js
-import React, { useState } from "react";
-
-const Counter = () => {
-  const [count, setCount] = useState(0);
-
-  const handleIncrement = () => {
-    // 클릭 이벤트가 발생할 때마다 handleIncrement함수가 실행 된다.
-    // 이 함수는 setCount를 호출하여 현재 count상태를 업데이트 하는데
-    // 여기서 prevCount => prevCount + 1이라는 업데이트 함수를 사용한다.
-    // 이 함수는 현재 상태값을 인자로 받아 새로운 상태값을 반환 하는데
-    // 이 과정에서 클로저를 통해 prevCount의 최신 상태를 참조하고 있다.
-    setCount((prevCount) => prevCount + 1);
-  };
-
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={handleIncrement}>증가</button>
-    </div>
-  );
+// 1. 객체 member를 생성
+// 객체 생성할 때는 일반적으로 키워드 const 사용
+const member = {
+  //member 객체는 id, username, age 세 개의 프로퍼티로 구성
+  // 프로퍼티에 id, username, age를 키 (key)라고 부르고
+  // 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 한다.
+  id: "kdhong",
+  username: "홍길동",
+  age: 30,
 };
 
-export default Counter;
+delete member.id;
+
+let text = "";
+
+// for in 문에서 x 는 객체 member에 존재하는 프로퍼티의 키 이름을 가진다.
+// 따라서 반복 루프에서 변수 x의 값은 id, name, age가 된다.
+for (x in member) {
+  text += `키: ${x} 값: ${member[x]} <br>`;
+}
+
+document.getElementById("show").innerHTML = text;
 ```
 
-# 10.6 예외 처리 (exception handling)
-
-- 코드 실행중 예기치 못한 오류가 발생 했을때 코드의 흐름을 복구하는 기능
-
-## 10.6.1 try ~ catch 문
-
-## 10.6.2 try ~ catch ~ finally 문
+### 11.2.4 중첩 객체
 
 ```js
-
-<body>
-  <button type="button" onclick="changeColor()">색상 변경</button>
-  <div
-    id="box"
-    style="width: 100px; height: 100px; background-color: green; color: white"
-  ></div>
-
-  <script>
-    let box = document.getElementById("box");
-
-    const change = (function () {
-      let toggle = false;
-      return function () {
-        toggle = !toggle;
-        box.style.backgroundColor = toggle ? "blue" : "red";
-        box.innerHTML = toggle ? "파란색" : "빨간색";
-      };
-    })();
-
-    function changeColor() {
-      change();
-    }
-  </script>
-</body>
-```
-
-```js
-const checkinput = () => {
-  let input_elem = document.getElementById("input1");
-  let a = input_elem.value;
-  document.getElementById("show").innerHTML = "";
-  try {
-    if (a === "") {
-      throw "비어 있습니다.";
-    }
-    if (isNaN(a)) {
-      throw "숫자가 아닙니다.";
-    }
-    a = Number(a);
-    if (a < 0 || a > 9) {
-      throw "0~9 사이 숫자가 아닙니다.";
-    }
-  } catch (error) {
-    document.getElementById("show").innerHTML = `오류: ${error}`;
-  } finally {
-    input_elem.value = "";
-  }
+// 1. 객체 member를 생성
+// 객체 생성할 때는 일반적으로 키워드 const 사용
+const member = {
+  //member 객체는 id, username, age 세 개의 프로퍼티로 구성
+  // 프로퍼티에 id, username, age를 키 (key)라고 부르고
+  // 이에 대응되는 "kdhong", "홍길동", 30을 값(value)라고 한다.
+  id: "kdhong",
+  username: "홍길동",
+  age: 30,
+  hobby: {
+    hobby1: "게임",
+    hobby2: "탁구",
+    hobby3: "기타",
+  },
 };
+
+let text = "";
+
+// for in 문에서 x 는 객체 member에 존재하는 프로퍼티의 키 이름을 가진다.
+// 따라서 반복 루프에서 변수 x의 값은 id, name, age가 된다.
+text = member.hobby.hobby1;
+
+document.getElementById("show").innerHTML = text;
 ```
+
+## 11.3 메서드
+
+### 11.3.1 메서드란?
+
+- 객체는 프로퍼티와 메서드로 구성된다.
+- 프로퍼티는 객체에 소속된 변수
+- 메서드는 객체에 소속된 함수
+- 다르게 말하자면 프로퍼티는 객체의 상태 의미하는 것이고
+- 메서드는 객체의 동작을 정의한다라고 할 수 있다.
+
+```js
+const dog = {
+  name: "댕댕이",
+  species: "믹스",
+  color: "흰색",
+  age: 3,
+  intro: function () {
+    return `우리집 강아지 이름은 ${this.name} 입니다.`;
+  },
+};
+
+document.getElementById("show").innerHTML = dog.intro();
+```
+
+### 11.3.2 메서드 추가하기
+
+```js
+const dog = {
+  name: "댕댕이",
+  species: "믹스",
+  color: "흰색",
+  age: 3,
+  intro: function () {
+    return `우리집 강아지 이름은 ${this.name} 입니다.`;
+  },
+};
+
+dog.getAge = function () {
+  return `나이는 ${this.age}살 입니다.`;
+};
+
+document.getElementById("show").innerHTML = dog.getAge();
+```
+
+### 11.3.3 내장 메서드
+
+- 자바스크립트 자체적으로 만들어준 내장 객체(built-in object)
