@@ -1,97 +1,65 @@
-# 8. for 문
+# 14. 문서 객체 모델 DOM
 
-## 8.1 for 문
+- HTML 문서의 구조화된 표현
+- DOM 구조에 접근하여 HTML 문서의 구조, 스타일, 내용 등을 변경
+- DOM은 웹 페이지, 즉 HTML 문서에 접근하여 문서를 읽고 조작할 수있는 API(Application Programming Interface)를 제공하는 인터페이스라고 할 수 있다.
+- DOM은 자바스크립 언어와는 독립적인 구조를 가지고 있다.
 
-- 특정 코드를 반복해서 실행 for, while, do while
+## 14.1 DOM의 구조
 
-```txt
-for(초기값; 조건식; 증가_감소;){
-  문장;
-  ...
-}
-```
+- HTML요소(element), 속성(attribute), 내용(content) 등으로 구성된 트리구조
+- 웹 페이지 요소들과 요소들에 관련된 정보를 트리 형태로 가지고 있다.
+- 모든 HTML 요소들은 객체로 정의 된다.
+- 자바스크립에서는 DOM에서 제공하는 메서드(method)와 프로퍼티(property)를 통하여 HTML 요소들에 접근하거나 요소들을 수정할 수 있다.
 
-```js
-// for의 조건식이 참인 동안 문장들을 반복실행
-// 1. i의 값을 1로 초기화
-// 2. 조건식 1 <= 3 참, 1출력
-// 3. i의 값이 1 증가
-// 4. i의 값이 2가 됨
-// 5. 조건식 2 <= 3 참, 2 출력
-// 6. i의 값이 1 증가
-// 7. i의 값이 3이 됨
-// 8. 조건식 3 <= 3창, 3 출력
-// 9. i의 값이 1 증가
-// 10. i의 값이 4가 됨
-// 11. 조건식 4 <=  3 거짓, for 루프를 빠져나감
-
-for (let i = 1; i <= 3; i++) {
-  console.log(1);
-}
-
-// for 문을 이용해서 1 ~ 10 정수의 합계를 구하는 프로그램
-let sum = 0;
-// i가 1에서 100까지 값을 가지는 동안
-for (let i =1; i <=100; 1++) {
-  // 문장이 반복 실행되며, 변수 sum에 1 ~ 100의 누적 합계를 저장
-  sum += i;
-}
-// sum의 값을 출력
-console.log(sum);
-
-// for문, 배열, 템플릿 문자열 이용하여 웹페이지 글자에 색을 설정
-const color =["red", "green", "blue", "pink"];
-let text = "";
-
-// i는 0, 1, 2, 3의 값을 가지는 동안
-for (let i = 0; i <=3; i++) {
-  text += `<span style="color: ${color[i]}">안녕</span>`;
-}
-console.log(text);
-document.write(text);
-
-  // 템플릿 문자열을 이용
-  //
-```
-
-## 8.2 for in 문
-
-- 객체의 요소들을 반복해서 읽어올 때 for in
+## 14.2 DOM 메서드와 프로퍼티
 
 ```js
-// 객체 내 각 요소들을 반복해서 읽어와
-// 그 키를 변수에 저장하는 식으로
-// 반복 루프가 진행
-for(변수 in 객체){
-  문장;
-  ...
+// 웹 페이지 있는 <p> 요소의 내용 변경
+// Document 객체의 getElementById("show")는 웹 페이지에서 아이디 "show"
+// 즉 <p> 요소를 가져온다.
+// innerHTML 에 "안녕!"을 설정함으로써
+// 단락 p 의 내용을 "안녕!" 으로 변경
+// DOM method: getElementById()
+// DOM property: innerHTML
+document.getElementById("show").innerHTML = "안녕!";
+
+// 문서가 로드될 때 글 제목 요소 h1을 생성하는 예
+// 1. window 객체의 onload() 메서드는
+// 자바스크립트 문서가 로드될 때 자동으로 호출
+window.onload = function () {
+  // 2. h1 요소를 생성하여 변수 element에 저장
+  let element = document.createElement("h1");
+  // 3. "글 제목"이란 텍스트 노드를 생성하여 변수 text에 저장
+  let text = document.createTextNode("글 제목");
+  // 4. element 요소가 가리키는 h1 요소에 text, 즉 "글 제목"을 추가
+  element.appendChild(text);
+  // 5. Document 객체의 body 요소에 element를 추가
+  document.body.appendChild(element);
+};
+```
+
+## 14.3 Document 객체
+- DOM의 Document 객체는 웹 페이지에 있는 모든 객체들의 소유주
+- 웹 페이지에 있는 요소들에 접근하기 위해 Document객체로부터 시작해서 해당 요소를 찾아간다.
+
+```html
+<body>
+    <form name="form1">
+      이름: <input type="text" name="name"/><br />
+      <button onclick="get_name()">버튼</button>
+    </form>
+    
+
+    <script src="js/dom.js"></script>
+  </body>
+  ```
+
+
+  ```js
+  function get_name() {
+    let text = document.form1.name.value;
+    alert(text);
 }
 ```
 
-```js
-const member = { id: "kdhong", username: "홍길동", age: 30 };
-
-// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
-for (let x in member) {
-  console.log(member[x]);
-}
-```
-
-````
-
-## 8.3 for of 문
-```js
-for()
-```
-```
-
-
-```js
-const member = { id: "kdhong", username: "홍길동", age: 30 };
-
-// 객체의 요소 수 만큼, 즉 세번 반복 루프 진행
-for (let x in member) {
-  console.log(member[x]);
-}
-```
-````
