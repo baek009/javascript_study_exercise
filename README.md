@@ -40,26 +40,24 @@ window.onload = function () {
 ```
 
 ## 14.3 Document 객체
-- DOM의 Document 객체는 웹 페이지에 있는 모든 객체들의 소유주
+
+- DOM의 Documnet 객체는 웹 페이지에 있는 모든 객체들의 소유주
 - 웹 페이지에 있는 요소들에 접근하기 위해 Document객체로부터 시작해서 해당 요소를 찾아간다.
 
 ```html
 <body>
-    <form name="form1">
-      이름: <input type="text" name="name"/><br />
-      <button onclick="get_name()">버튼</button>
-    </form>
-    
+  <form name="form1">
+    이름: <input type="text" name="name" /> <br />
+    <button onclick="get_name()">버튼</button>
+  </form>
 
-    <script src="js/dom.js"></script>
-  </body>
-  ```
-
-
-  ```js
-  function get_name() {
-    let text = document.form1.name.value;
-    alert(text);
-}
+  <script src="js/dom.js"></script>
+</body>
 ```
 
+```js
+function get_name() {
+  let text = document.form1.name.value;
+  alert(text);
+}
+```
