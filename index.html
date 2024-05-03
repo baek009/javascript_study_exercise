@@ -11,9 +11,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-    <img id="image" src="images/image.png" alt="기본이미지" />
-    <button onclick="changeImg()">이미지 변경</button>
-    <button onclick="changeSize()">이미지 사이즈 변경</button>
+    <form id="from1">
+      아이디 : <input type="text" name="uid"/><br>
+      이름 : <input type="text" name="name"/><br />
+      비밀번호 : <input type="password" name="upw" /><br />  
+    </form>
+      <button onclick="getInfo()">확인</button>
+
+    
+
+    <p id="show"></p>
+
     <script src="js/dom.js"></script>
   </body>
 </html>
