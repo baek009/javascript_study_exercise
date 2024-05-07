@@ -1,27 +1,28 @@
-<!DOCTYPE htmL>
-<!-- 요소: htmL, 속성: Lang -->
+<!DOCTYPE html>
+<!-- 요소: html, 속성: lang -->
 <html lang="ko">
-  <!--요소: head -->
-    <head>
+  <!-- 요소: head -->
+  <head>
     <!-- 요소: meta, 속성: charset -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--요소: title, 텍스트: 자바스크립트 스터디 -->
+    <!-- 요소: title, 텍스트: 자바스크립트 스터디 -->
     <title>자바스크립트 스터디</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    </head>
-    <body>
-    <form id="from1">
-      아이디 : <input type="text" name="uid"/><br>
-      이름 : <input type="text" name="name"/><br />
-      비밀번호 : <input type="password" name="upw" /><br />  
-    </form>
-      <button onclick="getInfo()">확인</button>
-
-    
-
-    <p id="show"></p>
-
-    <script src="js/dom.js"></script>
-  </body>
+    <style>
+      div#box {
+        border: solid 3px red;
+        width: 300px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box" onmousemove="showCoord(event)">
+      <p id="show"></p>
+  
+<div>
+  <body></body>
+</div>
+    <script src="js/event.js"></script>
 </html>
