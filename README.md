@@ -113,45 +113,46 @@ function changeBg2(btn) {
 
 - onmouseover 이벤트와 유사한 기능
 
-  ```html
-  <!DOCTYPE html>
-  <!-- 요소: html, 속성: lang -->
-  <html lang="ko">
-    <!-- 요소: head -->
-    <head>
-      <!-- 요소: meta, 속성: charset -->
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- 요소: title, 텍스트: 자바스크립트 스터디 -->
-      <title>자바스크립트 스터디</title>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <style>
-        div#box1 {
-          border: solid 3px red;
-        }
-        div#box2 {
-          border: solid 3px blue;
-        }
-        p {
-          border: solid 1px black;
-        }
-      </style>
-    </head>
-    <body>
-      <div id="box1" onmouseenter="increaseX()">
-        <p>단락1</p>
-        <span id="show1"></span>
-      </div>
+```html
+<!-- Document -->
+<!DOCTYPE html>
+<!-- 요소: html, 속성: lang -->
+<html lang="ko">
+  <!-- 요소: head -->
+  <head>
+    <!-- 요소: meta, 속성: charset -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 요소: title, 텍스트: 자바스크립트 스터디 -->
+    <title>자바스크립트 스터디</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      div#box1 {
+        border: solid 3px red;
+      }
+      div#box2 {
+        border: solid 3px blue;
+      }
+      p {
+        border: solid 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box1" onmouseenter="increaseX()">
+      <p>단락1</p>
+      <span id="show1"></span>
+    </div>
 
-      <div id="box2" onmouseover="increaseY()">
-        <p>단락2</p>
-        <span id="show2"></span>
-      </div>
+    <div id="box2" onmouseover="increaseY()">
+      <p>단락2</p>
+      <span id="show2"></span>
+    </div>
 
-      <script src="js/event.js"></script>
-    </body>
-  </html>
-  ```
+    <script src="js/event.js"></script>
+  </body>
+</html>
+```
 
 ```js
 let x = 0,
@@ -172,12 +173,12 @@ function increaseY() {
 
 ```html
 <body>
-  <div id="box1" onmouseenter="increaseX()">
+  <div id="box1" onmouseleave="increaseX()">
     <p>단락1</p>
     <span id="show1"></span>
   </div>
 
-  <div id="box2" onmouseover="increaseY()">
+  <div id="box2" onmouseout="increaseY()">
     <p>단락2</p>
     <span id="show2"></span>
   </div>
@@ -190,7 +191,7 @@ function increaseY() {
 
 - 요소 내에서 마우스가 이동할 때 발생
 
-```js
+```html
 <body>
   <div id="box" onmousemove="showCoord(event)">
     <p id="show"></p>
@@ -200,6 +201,82 @@ function increaseY() {
 </body>
 ```
 
+```js
+function showCoord(e) {
+  let text = "좌표: (" + e.clientX + "," + e.clientY + ")";
+  document.getElementById("show").innerHTML = text;
+}
+```
+
+### 15.3 포커스 이벤트
+
+- onfocus : 요소가 포커스를 얻었을 때
+- onblur : 요소가 포커스를 잃었을 때
+- 텍스트나 비밀번호 입력창 안에 마우스를 클릭하면 마우스 커서가 깜빡인다.
+- 이런 상태를 포커스를 얻었다고 표현
+- 반대로 입력창 외부를 클릭하면 포커스를 잃게 된다.
+
 ```html
-function showCoord(e) { let text = "좌표: (" + e.clientX + "," + e.clientY + ")"; document.getElementById("show").innerHTML = text; }
+<body>
+  <input type="text" id="uid" />
+  <input type="password" id="upw" onfocus="changeColor3()" onblur="changeColor4()" />
+
+  <script src="js/event.js"></script>
+</body>
+```
+
+```js
+const userId = document.getElementById("uid");
+const userPw = document.getElementById("upw");
+
+function changeBgColor1() {
+  userId.style.backgroundColor = "yellow";
+}
+function changeBgColor2() {
+  userId.style.backgroundColor = "gray";
+}
+
+userId.onfocus = function () {
+  changeBgColor1();
+};
+userId.onblur = function () {
+  changeBgColor2();
+};
+
+function changeColor3() {
+  userPw.style.backgroundColor = "yellow";
+}
+
+function changeColor4() {
+  userPw.style.backgroundColor = "red";
+}
+```
+
+## 15.4 기타 이벤트
+
+### 15.4.1 onchange 이벤트
+
+```html
+<body>
+  <label>
+    사이즈:
+    <select name="size" id="sz">
+      <option value="">선택</option>
+      <option value="small">S</option>
+      <option value="midium">M</option>
+      <option value="large">L</option>
+      <option value="xlarge">XL</option>
+    </select>
+  </label>
+  <p id="show"></p>
+
+  <script src="js/event.js"></script>
+</body>
+```
+
+```js
+const sel = document.getElementById("sz");
+sel.addEventListener("change", function (e) {
+  document.getElementById("show").innerHTML = `선택한 사이즈는 ${e.target.value}입니다.`;
+});
 ```
